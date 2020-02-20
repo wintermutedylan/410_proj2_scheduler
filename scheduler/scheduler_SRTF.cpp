@@ -7,5 +7,13 @@
  *      implements shortest remaining time first scheduling algorithm
  *     pre-emptive
  */
-
+#include "../includes/scheduler_SRTF.h"
 //TODO fill in content
+
+bool  Scheduler_SRTF::time_to_switch_processes(int tick_count, PCB &p){
+	return false;
+}
+
+void Scheduler_SRTF::sort(){
+
+}
