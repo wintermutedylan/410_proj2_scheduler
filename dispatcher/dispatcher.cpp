@@ -10,31 +10,30 @@
 
 
 	PCB Dispatcher::get_from_CPU(){
-		if (isValidJobOnCPU()){
+		if (isValidJobOnCPU() == true){
+			is_valid_job_on_cpu = false;
 			return cpu->get_process_off_core();
 
 		}
 		else {
 
 			return PCB();
-
 		}
+
 	}
 
 	void Dispatcher::put_on_CPU(PCB &process){
-
+		if (process.isEmpty() == false && isValidJobOnCPU() == false){
+			is_valid_job_on_cpu = true;
 			cpu->put_process_on_core(process);
+		}
+
 
 
 
 	}
 	bool Dispatcher::isValidJobOnCPU(){
-		if (cpu->get_COPY_of_Current_Process().isEmpty()){
-			return false;
-		}
-		else {
-			return true;
-		}
+		return is_valid_job_on_cpu;
 
 	}
 
