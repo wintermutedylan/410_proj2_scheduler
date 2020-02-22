@@ -22,30 +22,33 @@ void Stats::showAllProcessInfo(){
 }
 
 float Stats::get_av_response_time(){
-	int x;
+	float x;
+	int vecSize = vec->size();
 	for (int i = 0; i < vec->size(); i++){
 		x = x + vec->at(i).start_time - vec->at(i).arrival_time;
 	}
-	float results = x / vec->size();
+	float results = x / vecSize;
 
 	return results;
 }
 
 float Stats::get_av_turnaround_time(){
-	int a;
+	float a;
+	int vecSize = vec->size();
 	for (int i = 0; i < vec->size(); i++){
 		a = a + vec->at(i).finish_time - vec->at(i).arrival_time;
 	}
-	float results = a / vec->size();
+	float results = a / vecSize;
 		return results;
 }
 
 float Stats::get_av_wait_time(){
-	int k;
+	float k;
+	int vecSize = vec->size();
 	for (int i = 0; i < vec->size(); i++){
 		k = k + vec->at(i).finish_time - vec->at(i).arrival_time - vec->at(i).required_cpu_time;
 	}
-	float results = k / vec->size();
+	float results = k / vecSize;
 	return results;
 }
 
