@@ -11,9 +11,26 @@
 //TODO fill in content
 
 bool  Scheduler_SRTF::time_to_switch_processes(int tick_count, PCB &p){
-	return false;
+	sort();
+	int nextRemainingTime = ready_q->front().remaining_cpu_time;
+	int currRemainingTime = p.remaining_cpu_time;
+	if (currRemainingTime >  nextRemainingTime){
+		return true;
+	}
+	else {
+		return false;
+	}
+
+
 }
 
 void Scheduler_SRTF::sort(){
+
+	std::vector<PCB> x;
+
+	{
+		x.push_back(ready_q->front());
+		ready_q->pop();
+	}
 
 }

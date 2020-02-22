@@ -10,7 +10,12 @@
 #include "../includes/scheduler_FIFO.h"
 
 bool  Scheduler_FIFO::time_to_switch_processes(int tick_count, PCB &p){
-	return false;
+	if (p.remaining_cpu_time <= 0){
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 void Scheduler_FIFO::sort(){
 

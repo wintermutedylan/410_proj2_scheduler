@@ -10,14 +10,17 @@
 #include "../includes/scheduler_RR.h"
 
 bool Scheduler_RR::time_to_switch_processes(int tick_count, PCB &p){
+
 	int timeRemaining = p.required_cpu_time - p.remaining_cpu_time;
 	int switchTime = timeRemaining % time_slice;
-	if (switchTime == 0 || p.remaining_cpu_time <= 0){
+	if (p.remaining_cpu_time <= 0 || switchTime == 0){
 		return true;
 	}
 	else {
 		return false;
 	}
+
+
 }
 
 void Scheduler_RR::sort(){
